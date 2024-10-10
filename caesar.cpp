@@ -14,8 +14,8 @@ string encrypt(const string& text, int shift){
 
     for(char i: text){
         if(isalpha(i)){
-            int ascii_offset = isupper(i) ? 65 : 97;
-            encrypted_text += (char)(((int)i - ascii_offset + shift) % 26 + ascii_offset);
+            char ascii_offset = isupper(i) ? 'A' : 'a';
+            encrypted_text += (i - ascii_offset + shift) % 26 + ascii_offset;
         } else{
             encrypted_text += i;
         }
@@ -29,8 +29,8 @@ string decrypt(const string& text, int shift){
 
     for(char i: text){
         if(isalpha(i)){
-            int ascii_offset = isupper(i) ? 65 : 97;
-            decrypted_text += (char)(((int)i - ascii_offset - shift) % 26 + ascii_offset);
+            char ascii_offset = isupper(i) ? 'A' : 'a';
+            decrypted_text += (i - ascii_offset - shift + 26) % 26 + ascii_offset;
         } else{
             decrypted_text += i;
         }
